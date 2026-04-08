@@ -230,4 +230,4 @@ Este projeto é de uso educacional e demonstrativo.
 | Recurso | Descricao |
 |---|---|
 | [**SHOWCASE.html**](docs/SHOWCASE.html) | Showcase interativo com recortes estilizados |
-| [**Portfolio LinkedIn (PDF)**](docs/Portfolio_LinkedIn.html) | Versao PDF premium (5 paginas A4 paisagem) |
+| [**Portfolio LinkedIn (PDF)**](docs/SmartMenu_Portfolio_LinkedIn.html) | Versao PDF premium (5 paginas A4 paisagem) |

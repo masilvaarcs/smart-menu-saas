@@ -65,4 +65,5 @@ if (-not (Test-Path $mainScript)) {
         @{ Title = "Blazor WASM consumindo Minimal APIs";      Desc = "Frontend Blazor WebAssembly com HttpClient configurado via BaseAddress — CORS habilitado seletivamente no backend." }
     ) `
     -ClosingQuote "SaaS não é só tecnologia — é modelo de negócio. Cada linha de código aqui reflete como escalar um produto com dados isolados, planos e acesso público." `
+    -PortfolioSlug "SmartMenu" `
     -UpdateReadme $true

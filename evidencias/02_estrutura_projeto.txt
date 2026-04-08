@@ -1,0 +1,159 @@
+================================================================================
+  ESTRUTURA DO PROJETO - SMART MENU SAAS
+  Data: 05/04/2026 14:21:14
+================================================================================
+
+--- Arvore de diretorios ---
+            docs/
+            evidencias/
+              01_resultados_api_endpoints.txt
+            src/
+              SmartMenu.Api/
+                Data/
+                  SmartMenuDbContext.cs
+                Properties/
+                  launchSettings.json
+                Services/
+                  QrCodeService.cs
+                  TokenService.cs
+                appsettings.Development.json
+                appsettings.json
+                Program.cs
+                SmartMenu.Api.csproj
+                SmartMenu.Api.http
+                smartmenu.db-shm
+                smartmenu.db-wal
+              SmartMenu.Shared/
+                DTOs/
+                  SmartMenuDTOs.cs
+                Enums/
+                  PlanoAssinatura.cs
+                Models/
+                  Categoria.cs
+                  ItemCardapio.cs
+                  Restaurante.cs
+                  Usuario.cs
+                SmartMenu.Shared.csproj
+              SmartMenu.Web/
+                Layout/
+                  MainLayout.razor
+                  MainLayout.razor.css
+                  NavMenu.razor
+                  NavMenu.razor.css
+                Pages/
+                  Counter.razor
+                  Home.razor
+                  NotFound.razor
+                  Weather.razor
+                Properties/
+                  launchSettings.json
+                wwwroot/
+                  css/
+                    app.css
+                  lib/
+                    bootstrap/
+                      dist/
+                        css/
+                          bootstrap-grid.css
+                          bootstrap-grid.css.map
+                          bootstrap-grid.min.css
+                          bootstrap-grid.min.css.map
+                          bootstrap-grid.rtl.css
+                          bootstrap-grid.rtl.css.map
+                          bootstrap-grid.rtl.min.css
+                          bootstrap-grid.rtl.min.css.map
+                          bootstrap-reboot.css
+                          bootstrap-reboot.css.map
+                          bootstrap-reboot.min.css
+                          bootstrap-reboot.min.css.map
+                          bootstrap-reboot.rtl.css
+                          bootstrap-reboot.rtl.css.map
+                          bootstrap-reboot.rtl.min.css
+                          bootstrap-reboot.rtl.min.css.map
+                          bootstrap-utilities.css
+                          bootstrap-utilities.css.map
+                          bootstrap-utilities.min.css
+                          bootstrap-utilities.min.css.map
+                          bootstrap-utilities.rtl.css
+                          bootstrap-utilities.rtl.css.map
+                          bootstrap-utilities.rtl.min.css
+                          bootstrap-utilities.rtl.min.css.map
+                          bootstrap.css
+                          bootstrap.css.map
+                          bootstrap.min.css
+                          bootstrap.min.css.map
+                          bootstrap.rtl.css
+                          bootstrap.rtl.css.map
+                          bootstrap.rtl.min.css
+                          bootstrap.rtl.min.css.map
+                        js/
+                          bootstrap.bundle.js
+                          bootstrap.bundle.js.map
+                          bootstrap.bundle.min.js
+                          bootstrap.bundle.min.js.map
+                          bootstrap.esm.js
+                          bootstrap.esm.js.map
+                          bootstrap.esm.min.js
+                          bootstrap.esm.min.js.map
+                          bootstrap.js
+                          bootstrap.js.map
+                          bootstrap.min.js
+                          bootstrap.min.js.map
+                  sample-data/
+                    weather.json
+                  favicon.png
+                  icon-192.png
+                  index.html
+                _Imports.razor
+                App.razor
+                Program.cs
+                SmartMenu.Web.csproj
+            tests/
+              SmartMenu.Tests/
+                SmartMenu.Tests.csproj
+                UnitTest1.cs
+            .gitignore
+            README.md
+            SmartMenu.slnx
+
+--- NuGet Packages (SmartMenu.Api.csproj) ---
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.5">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.5" />
+    <PackageReference Include="QRCoder" Version="1.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SmartMenu.Shared\SmartMenu.Shared.csproj" />
+  </ItemGroup>
+
+</Project>
+
+
+--- Contagem de linhas de codigo ---
+  C:\__DEV__\__Projetos_2026\AnaliseRepositoriosGitHub\RepositoriosGitHub\smart-menu-saas\src\SmartMenu.Api\Data\SmartMenuDbContext.cs : 98 linhas
+  C:\__DEV__\__Projetos_2026\AnaliseRepositoriosGitHub\RepositoriosGitHub\smart-menu-saas\src\SmartMenu.Api\Services\QrCodeService.cs : 26 linhas
+  C:\__DEV__\__Projetos_2026\AnaliseRepositoriosGitHub\RepositoriosGitHub\smart-menu-saas\src\SmartMenu.Api\Services\TokenService.cs : 38 linhas
+  C:\__DEV__\__Projetos_2026\AnaliseRepositoriosGitHub\RepositoriosGitHub\smart-menu-saas\src\SmartMenu.Api\Program.cs : 388 linhas
+  C:\__DEV__\__Projetos_2026\AnaliseRepositoriosGitHub\RepositoriosGitHub\smart-menu-saas\src\SmartMenu.Shared\DTOs\SmartMenuDTOs.cs : 78 linhas
+  C:\__DEV__\__Projetos_2026\AnaliseRepositoriosGitHub\RepositoriosGitHub\smart-menu-saas\src\SmartMenu.Shared\Enums\PlanoAssinatura.cs : 11 linhas
+  C:\__DEV__\__Projetos_2026\AnaliseRepositoriosGitHub\RepositoriosGitHub\smart-menu-saas\src\SmartMenu.Shared\Models\Categoria.cs : 23 linhas
+  C:\__DEV__\__Projetos_2026\AnaliseRepositoriosGitHub\RepositoriosGitHub\smart-menu-saas\src\SmartMenu.Shared\Models\ItemCardapio.cs : 32 linhas
+  C:\__DEV__\__Projetos_2026\AnaliseRepositoriosGitHub\RepositoriosGitHub\smart-menu-saas\src\SmartMenu.Shared\Models\Restaurante.cs : 35 linhas
+  C:\__DEV__\__Projetos_2026\AnaliseRepositoriosGitHub\RepositoriosGitHub\smart-menu-saas\src\SmartMenu.Shared\Models\Usuario.cs : 22 linhas
+  C:\__DEV__\__Projetos_2026\AnaliseRepositoriosGitHub\RepositoriosGitHub\smart-menu-saas\src\SmartMenu.Web\Program.cs : 8 linhas
+  TOTAL: 759 linhas de C#

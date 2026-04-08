@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 840 520" width="840" height="520">
+  <defs>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/><stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#E53935"/><stop offset="50%" style="stop-color:#FF6F00"/><stop offset="100%" style="stop-color:#E53935"/>
+    </linearGradient>
+    <linearGradient id="metricBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff10"/><stop offset="100%" style="stop-color:#ffffff05"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E53935"/><stop offset="100%" style="stop-color:#FF6F00"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <clipPath id="faceClip"><circle cx="755" cy="370" r="40"/></clipPath>
+    <filter id="faceGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="840" height="520" rx="16" fill="#0d1117"/>
+  <!-- Label do crop para comparacao -->
+  <text x="20" y="25" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="600" fill="#FF6F00">Crop 2: Medio (centralizado)</text>
+  <g transform="translate(420,255) rotate(-1.5) translate(-370,-195)" filter="url(#shadow)">
+    <rect width="740" height="390" rx="16" fill="url(#cardBg)" stroke="#ffffff15" stroke-width="1"/>
+    <rect width="740" height="5" rx="3" fill="url(#accent)" y="0"/>
+    <text x="40" y="50" font-family="Segoe UI,Arial,sans-serif" font-size="26" font-weight="700" fill="#fff">&#127829; SMART MENU SAAS</text>
+    <text x="40" y="74" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#8b949e">Card&#225;pio Digital Multi-Tenant &#183; .NET 10 &#183; Minimal API &#183; JWT &#183; QR Code</text>
+    <line x1="40" y1="90" x2="700" y2="90" stroke="#ffffff15" stroke-width="1"/>
+    <rect x="40" y="105" width="155" height="75" rx="10" fill="url(#metricBg)" stroke="#ffffff10" stroke-width="1"/>
+    <text x="117" y="143" font-family="Segoe UI,Arial,sans-serif" font-size="30" font-weight="700" fill="#E53935" text-anchor="middle">22</text>
+    <text x="117" y="165" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">ENDPOINTS REST</text>
+    <rect x="210" y="105" width="155" height="75" rx="10" fill="url(#metricBg)" stroke="#ffffff10" stroke-width="1"/>
+    <text x="287" y="143" font-family="Segoe UI,Arial,sans-serif" font-size="30" font-weight="700" fill="#4CAF50" text-anchor="middle">759</text>
+    <text x="287" y="165" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">LINHAS DE C#</text>
+    <rect x="380" y="105" width="155" height="75" rx="10" fill="url(#metricBg)" stroke="#ffffff10" stroke-width="1"/>
+    <text x="457" y="143" font-family="Segoe UI,Arial,sans-serif" font-size="30" font-weight="700" fill="#2196F3" text-anchor="middle">4</text>
+    <text x="457" y="165" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">PROJETOS .NET</text>
+    <rect x="550" y="105" width="155" height="75" rx="10" fill="url(#metricBg)" stroke="#ffffff10" stroke-width="1"/>
+    <text x="627" y="143" font-family="Segoe UI,Arial,sans-serif" font-size="30" font-weight="700" fill="#00E676" text-anchor="middle">&#10004;</text>
+    <text x="627" y="165" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">TODOS OS TESTES</text>
+    <text x="40" y="216" font-family="Segoe UI,Arial,sans-serif" font-size="12" font-weight="600" fill="#E53935" letter-spacing="2">EVID&#202;NCIAS DE EXECU&#199;&#195;O</text>
+    <circle cx="52" cy="240" r="3.5" fill="#00E676"/><text x="63" y="244" font-family="Segoe UI,Arial,sans-serif" font-size="12.5" fill="#c9d1d9">Login JWT autenticado com sucesso</text>
+    <circle cx="52" cy="262" r="3.5" fill="#00E676"/><text x="63" y="266" font-family="Segoe UI,Arial,sans-serif" font-size="12.5" fill="#c9d1d9">1 restaurante retornado (multi-tenant)</text>
+    <circle cx="52" cy="284" r="3.5" fill="#00E676"/><text x="63" y="288" font-family="Segoe UI,Arial,sans-serif" font-size="12.5" fill="#c9d1d9">4 categorias &#183; 10 itens do card&#225;pio</text>
+    <circle cx="52" cy="306" r="3.5" fill="#00E676"/><text x="63" y="310" font-family="Segoe UI,Arial,sans-serif" font-size="12.5" fill="#c9d1d9">QR Code gerado (PNG bin&#225;rio)</text>
+    <circle cx="400" cy="240" r="3.5" fill="#00E676"/><text x="411" y="244" font-family="Segoe UI,Arial,sans-serif" font-size="12.5" fill="#c9d1d9">Dashboard com m&#233;tricas OK</text>
+    <circle cx="400" cy="262" r="3.5" fill="#00E676"/><text x="411" y="266" font-family="Segoe UI,Arial,sans-serif" font-size="12.5" fill="#c9d1d9">Card&#225;pio p&#250;blico sem auth</text>
+    <circle cx="400" cy="284" r="3.5" fill="#00E676"/><text x="411" y="288" font-family="Segoe UI,Arial,sans-serif" font-size="12.5" fill="#c9d1d9">Health check endpoint ativo</text>
+    <circle cx="400" cy="306" r="3.5" fill="#00E676"/><text x="411" y="310" font-family="Segoe UI,Arial,sans-serif" font-size="12.5" fill="#c9d1d9">Seed data: Pizzaria do Marcos</text>
+    <line x1="40" y1="330" x2="700" y2="330" stroke="#ffffff10" stroke-width="1"/>
+    <rect x="40" y="342" width="60" height="20" rx="4" fill="#512BD4" opacity="0.8"/><text x="70" y="356" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#fff" text-anchor="middle">.NET 10</text>
+    <rect x="106" y="342" width="35" height="20" rx="4" fill="#512BD4" opacity="0.6"/><text x="123" y="356" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#fff" text-anchor="middle">C#</text>
+    <rect x="147" y="342" width="42" height="20" rx="4" fill="#003B57" opacity="0.8"/><text x="168" y="356" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#fff" text-anchor="middle">SQLite</text>
+    <rect x="195" y="342" width="32" height="20" rx="4" fill="#FF6F00" opacity="0.8"/><text x="211" y="356" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#fff" text-anchor="middle">JWT</text>
+    <rect x="233" y="342" width="52" height="20" rx="4" fill="#E53935" opacity="0.7"/><text x="259" y="356" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#fff" text-anchor="middle">QRCode</text>
+    <rect x="291" y="342" width="52" height="20" rx="4" fill="#4CAF50" opacity="0.7"/><text x="317" y="356" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#fff" text-anchor="middle">EF Core</text>
+    <text x="630" y="378" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#6e7681" text-anchor="end">Marcos Silva &#183; Full Stack S&#234;nior</text>
+  </g>
+  <!-- Face watermark - posicao corrigida: mais acima e a direita -->
+  <g filter="url(#faceGlow)">
+    <circle cx="755" cy="370" r="44" fill="none" stroke="url(#ring)" stroke-width="2.5" opacity="0.7"/>
+    <image xlink:href="data:image/jpeg;base64,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" x="715" y="330" width="80" height="80" clip-path="url(#faceClip)" opacity="0.45"/>
+    <circle cx="755" cy="370" r="40" fill="none" stroke="#ffffff30" stroke-width="1"/>
+  </g>
+  <text x="420" y="507" font-family="Segoe UI,Arial,sans-serif" font-size="10.5" fill="#484f58" text-anchor="middle">Evid&#234;ncia capturada em 05/04/2026 &#183; .NET 10.0.104 &#183; Windows</text>
+</svg>

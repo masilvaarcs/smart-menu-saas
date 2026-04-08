@@ -1,0 +1,107 @@
+@page "/restaurantes"
+@inject NavigationManager Nav
+@inject SmartMenu.Web.Services.ApiService Api
+@using SmartMenu.Shared.DTOs
+
+<PageTitle>Meus Restaurantes — SmartMenu</PageTitle>
+
+@if (!Api.Autenticado)
+{
+    Nav.NavigateTo("/");
+    return;
+}
+
+<div class="page-header">
+    <div>
+        <h2 class="page-title">🍽️ Meus Restaurantes</h2>
+        <p class="page-sub">Olá, <strong>@Api.NomeUsuario</strong>!</p>
+    </div>
+    <button class="btn btn-outline-danger btn-sm" @onclick="Sair">Sair</button>
+</div>
+
+@if (carregando)
+{
+    <div class="text-center py-5">
+        <div class="spinner-border text-success"></div>
+        <p class="mt-2 text-muted">Carregando...</p>
+    </div>
+}
+else if (restaurantes is null || restaurantes.Count == 0)
+{
+    <div class="empty-state">
+        <div class="empty-icon">🍕</div>
+        <h5>Nenhum restaurante ainda</h5>
+        <p class="text-muted">Crie seu primeiro restaurante para começar.</p>
+    </div>
+}
+else
+{
+    <div class="rest-grid">
+        @foreach (var r in restaurantes)
+        {
+            <div class="rest-card" @onclick="() => AbrirCardapio(r.Id)">
+                <div class="rest-color" style="background:@(string.IsNullOrEmpty(r.CorPrimaria) ? "#4CAF50" : r.CorPrimaria)">
+                    <span class="rest-initial">@r.Nome[0]</span>
+                </div>
+                <div class="rest-info">
+                    <h5 class="rest-nome">@r.Nome</h5>
+                    <p class="rest-desc">@r.Descricao</p>
+                    <div class="rest-meta">
+                        <span class="badge-plano plano-@r.Plano.ToLower()">@r.Plano</span>
+                        <span class="rest-itens">@r.TotalItens itens</span>
+                    </div>
+                </div>
+                <div class="rest-actions">
+                    <button class="btn btn-sm btn-outline-primary" @onclick:stopPropagation="true"
+                            @onclick="() => AbrirQrCode(r.Id, r.Slug)">
+                        QR Code
+                    </button>
+                    <a href="/menu/@r.Slug" target="_blank" class="btn btn-sm btn-outline-success"
+                       @onclick:stopPropagation="true">
+                        Ver Cardápio
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+<style>
+    .page-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:2rem; }
+    .page-title { font-size:1.6rem; font-weight:800; margin:0; }
+    .page-sub { color:#888; margin:0; }
+    .rest-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:1.5rem; }
+    .rest-card { background:#fff; border-radius:12px; border:1px solid #eee;
+                 box-shadow:0 2px 8px rgba(0,0,0,.06); cursor:pointer;
+                 transition:transform .2s, box-shadow .2s; overflow:hidden; }
+    .rest-card:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(0,0,0,.12); }
+    .rest-color { height:80px; display:flex; align-items:center; justify-content:center; }
+    .rest-initial { font-size:2.5rem; font-weight:800; color:#fff; }
+    .rest-info { padding:1rem 1rem .5rem; }
+    .rest-nome { font-size:1.1rem; font-weight:700; margin:0 0 .25rem; }
+    .rest-desc { color:#888; font-size:.85rem; margin:0 0 .5rem; }
+    .rest-meta { display:flex; gap:.5rem; align-items:center; }
+    .badge-plano { padding:.2rem .6rem; border-radius:999px; font-size:.72rem; font-weight:700; }
+    .plano-pro { background:#e8f5e9; color:#2e7d32; }
+    .plano-gratis { background:#e3f2fd; color:#1565c0; }
+    .rest-itens { color:#aaa; font-size:.8rem; }
+    .rest-actions { padding:.5rem 1rem 1rem; display:flex; gap:.5rem; }
+    .empty-state { text-align:center; padding:4rem 2rem; }
+    .empty-icon { font-size:4rem; margin-bottom:1rem; }
+</style>
+
+@code {
+    List<RestauranteResponse>? restaurantes;
+    bool carregando = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (!Api.Autenticado) { Nav.NavigateTo("/"); return; }
+        restaurantes = await Api.GetRestaurantesAsync();
+        carregando = false;
+    }
+
+    void AbrirCardapio(int id) => Nav.NavigateTo($"/cardapio/{id}");
+    void AbrirQrCode(int id, string slug) => Nav.NavigateTo($"/qrcode/{id}/{slug}");
+    void Sair() { Api.Logout(); Nav.NavigateTo("/"); }
+}

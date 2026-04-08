@@ -1,0 +1,127 @@
+@page "/cardapio/{RestauranteId:int}"
+@inject NavigationManager Nav
+@inject SmartMenu.Web.Services.ApiService Api
+@using SmartMenu.Shared.DTOs
+
+<PageTitle>Cardápio — SmartMenu</PageTitle>
+
+@if (!Api.Autenticado) { Nav.NavigateTo("/"); return; }
+
+<div class="page-header">
+    <div>
+        <button class="btn btn-link p-0 mb-1" @onclick="Voltar">← Restaurantes</button>
+        <h2 class="page-title">📋 Cardápio: @restaurante?.Nome</h2>
+        @if (restaurante is not null)
+        {
+            <span class="badge-plano plano-@restaurante.Plano.ToLower()">@restaurante.Plano</span>
+            <span class="ms-2 text-muted small">@restaurante.TotalItens itens no total</span>
+        }
+    </div>
+    <div class="d-flex gap-2">
+        <a href="/qrcode/@RestauranteId/@restaurante?.Slug" class="btn btn-outline-primary btn-sm">QR Code</a>
+        <a href="/menu/@restaurante?.Slug" target="_blank" class="btn btn-outline-success btn-sm">Ver Público</a>
+    </div>
+</div>
+
+@if (carregando)
+{
+    <div class="text-center py-5">
+        <div class="spinner-border text-success"></div>
+    </div>
+}
+else if (categorias is not null)
+{
+    @foreach (var cat in categorias)
+    {
+        <div class="cat-section">
+            <div class="cat-header">
+                <span class="cat-icon">@cat.Icone</span>
+                <span class="cat-nome">@cat.Nome</span>
+                <span class="badge bg-light text-dark ms-2">@cat.TotalItens itens</span>
+            </div>
+
+            @if (itensPorCategoria.TryGetValue(cat.Id, out var itens))
+            {
+                <div class="itens-grid">
+                    @foreach (var item in itens)
+                    {
+                        <div class="item-card @(item.Destaque ? "destaque" : "")">
+                            @if (item.Destaque)
+                            {
+                                <div class="destaque-badge">⭐ Destaque</div>
+                            }
+                            <div class="item-info">
+                                <div class="item-nome">@item.Nome</div>
+                                <div class="item-desc">@item.Descricao</div>
+                                @if (!string.IsNullOrEmpty(item.Tags))
+                                {
+                                    <div class="item-tags">
+                                        @foreach (var tag in item.Tags.Split(',', StringSplitOptions.RemoveEmptyEntries))
+                                        {
+                                            <span class="item-tag">@tag.Trim()</span>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                            <div class="item-preco">R$ @item.Preco.ToString("N2")</div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    }
+}
+
+<style>
+    .page-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:2rem; padding-bottom:1rem; border-bottom:1px solid #eee; }
+    .page-title { font-size:1.4rem; font-weight:800; margin:.25rem 0; }
+    .badge-plano { padding:.2rem .6rem; border-radius:999px; font-size:.72rem; font-weight:700; }
+    .plano-pro { background:#e8f5e9; color:#2e7d32; }
+    .plano-gratis { background:#e3f2fd; color:#1565c0; }
+    .cat-section { margin-bottom:2rem; }
+    .cat-header { display:flex; align-items:center; gap:.5rem; padding:.75rem 0; border-bottom:2px solid #f0f0f0; margin-bottom:1rem; }
+    .cat-icon { font-size:1.4rem; }
+    .cat-nome { font-size:1.15rem; font-weight:700; color:#1a1a2e; }
+    .itens-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1rem; }
+    .item-card { background:#fff; border-radius:10px; border:1px solid #eee; padding:1rem; position:relative;
+                  box-shadow:0 1px 4px rgba(0,0,0,.05); display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; }
+    .item-card.destaque { border-color:#4CAF50; box-shadow:0 2px 8px rgba(76,175,80,.2); }
+    .destaque-badge { position:absolute; top:-8px; left:12px; background:#4CAF50; color:#fff;
+                       font-size:.65rem; font-weight:700; padding:.15rem .5rem; border-radius:999px; }
+    .item-info { flex:1; }
+    .item-nome { font-weight:700; font-size:.95rem; margin-bottom:.2rem; }
+    .item-desc { color:#888; font-size:.82rem; line-height:1.4; }
+    .item-tags { display:flex; gap:.3rem; flex-wrap:wrap; margin-top:.4rem; }
+    .item-tag { background:#e8f5e9; color:#2e7d32; font-size:.7rem; padding:.15rem .4rem; border-radius:4px; }
+    .item-preco { font-size:1.1rem; font-weight:800; color:#2e7d32; white-space:nowrap; }
+</style>
+
+@code {
+    [Parameter] public int RestauranteId { get; set; }
+
+    RestauranteResponse? restaurante;
+    List<CategoriaResponse>? categorias;
+    Dictionary<int, List<ItemCardapioResponse>> itensPorCategoria = new();
+    bool carregando = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (!Api.Autenticado) { Nav.NavigateTo("/"); return; }
+
+        restaurante = await Api.GetRestauranteAsync(RestauranteId);
+        categorias = await Api.GetCategoriasAsync(RestauranteId);
+
+        if (categorias is not null)
+        {
+            foreach (var cat in categorias)
+            {
+                var itens = await Api.GetItensAsync(RestauranteId, cat.Id);
+                if (itens is not null)
+                    itensPorCategoria[cat.Id] = itens;
+            }
+        }
+        carregando = false;
+    }
+
+    void Voltar() => Nav.NavigateTo("/restaurantes");
+}

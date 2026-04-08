@@ -1,0 +1,824 @@
+================================================================================
+  EVIDENCIAS DE EXECUCAO - SMART MENU SAAS
+  Data: 05/04/2026 14:20:53
+  Ambiente: .NET 10.0.104 | Windows
+================================================================================
+
+--- [1] GET /health ---
+{
+  "nomeRestaurante": "Pizzaria do Marcos",
+  "descricao": "As melhores pizzas artesanais de Gravataí!",
+  "logoUrl": "",
+  "corPrimaria": "#E53935",
+  "telefone": "(51) 99999-0000",
+  "endereco": "Rua Exemplo, 123 - Gravataí/RS",
+  "categorias": [
+    {
+      "nome": "Pizzas Tradicionais",
+      "icone": "🍕",
+      "itens": [
+        {
+          "nome": "Margherita",
+          "descricao": "Molho de tomate, mozzarella, manjericão fresco e azeite",
+          "preco": 42.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": "vegetariano"
+        },
+        {
+          "nome": "Calabresa",
+          "descricao": "Molho de tomate, calabresa artesanal, cebola e azeitonas",
+          "preco": 44.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": ""
+        },
+        {
+          "nome": "Portuguesa",
+          "descricao": "Molho de tomate, presunto, ovo, cebola, azeitona e ervilha",
+          "preco": 46.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": ""
+        },
+        {
+          "nome": "Quatro Queijos",
+          "descricao": "Mozzarella, provolone, catupiry e gorgonzola",
+          "preco": 49.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": "vegetariano"
+        }
+      ]
+    },
+    {
+      "nome": "Pizzas Especiais",
+      "icone": "⭐",
+      "itens": [
+        {
+          "nome": "Parma com Rúcula",
+          "descricao": "Presunto de Parma, rúcula, tomate cereja e parmesão",
+          "preco": 59.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": ""
+        },
+        {
+          "nome": "Trufada",
+          "descricao": "Creme de trufa negra, cogumelos frescos e parmesão",
+          "preco": 64.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": "vegetariano,premium"
+        }
+      ]
+    },
+    {
+      "nome": "Bebidas",
+      "icone": "🥤",
+      "itens": [
+        {
+          "nome": "Refrigerante Lata",
+          "descricao": "Coca-Cola, Guaraná ou Fanta (350ml)",
+          "preco": 7.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": ""
+        },
+        {
+          "nome": "Suco Natural",
+          "descricao": "Laranja, limão ou maracujá (500ml)",
+          "preco": 12.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": "natural"
+        },
+        {
+          "nome": "Chopp Artesanal",
+          "descricao": "Pilsen ou IPA (500ml)",
+          "preco": 18.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": ""
+        }
+      ]
+    },
+    {
+      "nome": "Sobremesas",
+      "icone": "🍰",
+      "itens": [
+        {
+          "nome": "Petit Gâteau",
+          "descricao": "Bolo quente de chocolate com sorvete de creme",
+          "preco": 24.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": ""
+        }
+      ]
+    }
+  ]
+}
+
+--- [2] POST /api/auth/login (admin@smartmenu.com / Admin@123) ---
+{
+  "nomeRestaurante": "Pizzaria do Marcos",
+  "descricao": "As melhores pizzas artesanais de Gravataí!",
+  "logoUrl": "",
+  "corPrimaria": "#E53935",
+  "telefone": "(51) 99999-0000",
+  "endereco": "Rua Exemplo, 123 - Gravataí/RS",
+  "categorias": [
+    {
+      "nome": "Pizzas Tradicionais",
+      "icone": "🍕",
+      "itens": [
+        {
+          "nome": "Margherita",
+          "descricao": "Molho de tomate, mozzarella, manjericão fresco e azeite",
+          "preco": 42.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": "vegetariano"
+        },
+        {
+          "nome": "Calabresa",
+          "descricao": "Molho de tomate, calabresa artesanal, cebola e azeitonas",
+          "preco": 44.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": ""
+        },
+        {
+          "nome": "Portuguesa",
+          "descricao": "Molho de tomate, presunto, ovo, cebola, azeitona e ervilha",
+          "preco": 46.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": ""
+        },
+        {
+          "nome": "Quatro Queijos",
+          "descricao": "Mozzarella, provolone, catupiry e gorgonzola",
+          "preco": 49.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": "vegetariano"
+        }
+      ]
+    },
+    {
+      "nome": "Pizzas Especiais",
+      "icone": "⭐",
+      "itens": [
+        {
+          "nome": "Parma com Rúcula",
+          "descricao": "Presunto de Parma, rúcula, tomate cereja e parmesão",
+          "preco": 59.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": ""
+        },
+        {
+          "nome": "Trufada",
+          "descricao": "Creme de trufa negra, cogumelos frescos e parmesão",
+          "preco": 64.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": "vegetariano,premium"
+        }
+      ]
+    },
+    {
+      "nome": "Bebidas",
+      "icone": "🥤",
+      "itens": [
+        {
+          "nome": "Refrigerante Lata",
+          "descricao": "Coca-Cola, Guaraná ou Fanta (350ml)",
+          "preco": 7.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": ""
+        },
+        {
+          "nome": "Suco Natural",
+          "descricao": "Laranja, limão ou maracujá (500ml)",
+          "preco": 12.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": "natural"
+        },
+        {
+          "nome": "Chopp Artesanal",
+          "descricao": "Pilsen ou IPA (500ml)",
+          "preco": 18.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": ""
+        }
+      ]
+    },
+    {
+      "nome": "Sobremesas",
+      "icone": "🍰",
+      "itens": [
+        {
+          "nome": "Petit Gâteau",
+          "descricao": "Bolo quente de chocolate com sorvete de creme",
+          "preco": 24.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": ""
+        }
+      ]
+    }
+  ]
+}
+
+--- [3] GET /api/restaurantes ---
+{
+  "nomeRestaurante": "Pizzaria do Marcos",
+  "descricao": "As melhores pizzas artesanais de Gravataí!",
+  "logoUrl": "",
+  "corPrimaria": "#E53935",
+  "telefone": "(51) 99999-0000",
+  "endereco": "Rua Exemplo, 123 - Gravataí/RS",
+  "categorias": [
+    {
+      "nome": "Pizzas Tradicionais",
+      "icone": "🍕",
+      "itens": [
+        {
+          "nome": "Margherita",
+          "descricao": "Molho de tomate, mozzarella, manjericão fresco e azeite",
+          "preco": 42.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": "vegetariano"
+        },
+        {
+          "nome": "Calabresa",
+          "descricao": "Molho de tomate, calabresa artesanal, cebola e azeitonas",
+          "preco": 44.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": ""
+        },
+        {
+          "nome": "Portuguesa",
+          "descricao": "Molho de tomate, presunto, ovo, cebola, azeitona e ervilha",
+          "preco": 46.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": ""
+        },
+        {
+          "nome": "Quatro Queijos",
+          "descricao": "Mozzarella, provolone, catupiry e gorgonzola",
+          "preco": 49.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": "vegetariano"
+        }
+      ]
+    },
+    {
+      "nome": "Pizzas Especiais",
+      "icone": "⭐",
+      "itens": [
+        {
+          "nome": "Parma com Rúcula",
+          "descricao": "Presunto de Parma, rúcula, tomate cereja e parmesão",
+          "preco": 59.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": ""
+        },
+        {
+          "nome": "Trufada",
+          "descricao": "Creme de trufa negra, cogumelos frescos e parmesão",
+          "preco": 64.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": "vegetariano,premium"
+        }
+      ]
+    },
+    {
+      "nome": "Bebidas",
+      "icone": "🥤",
+      "itens": [
+        {
+          "nome": "Refrigerante Lata",
+          "descricao": "Coca-Cola, Guaraná ou Fanta (350ml)",
+          "preco": 7.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": ""
+        },
+        {
+          "nome": "Suco Natural",
+          "descricao": "Laranja, limão ou maracujá (500ml)",
+          "preco": 12.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": "natural"
+        },
+        {
+          "nome": "Chopp Artesanal",
+          "descricao": "Pilsen ou IPA (500ml)",
+          "preco": 18.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": ""
+        }
+      ]
+    },
+    {
+      "nome": "Sobremesas",
+      "icone": "🍰",
+      "itens": [
+        {
+          "nome": "Petit Gâteau",
+          "descricao": "Bolo quente de chocolate com sorvete de creme",
+          "preco": 24.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": ""
+        }
+      ]
+    }
+  ]
+}
+
+--- [4] GET /api/categorias ---
+{
+  "nomeRestaurante": "Pizzaria do Marcos",
+  "descricao": "As melhores pizzas artesanais de Gravataí!",
+  "logoUrl": "",
+  "corPrimaria": "#E53935",
+  "telefone": "(51) 99999-0000",
+  "endereco": "Rua Exemplo, 123 - Gravataí/RS",
+  "categorias": [
+    {
+      "nome": "Pizzas Tradicionais",
+      "icone": "🍕",
+      "itens": [
+        {
+          "nome": "Margherita",
+          "descricao": "Molho de tomate, mozzarella, manjericão fresco e azeite",
+          "preco": 42.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": "vegetariano"
+        },
+        {
+          "nome": "Calabresa",
+          "descricao": "Molho de tomate, calabresa artesanal, cebola e azeitonas",
+          "preco": 44.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": ""
+        },
+        {
+          "nome": "Portuguesa",
+          "descricao": "Molho de tomate, presunto, ovo, cebola, azeitona e ervilha",
+          "preco": 46.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": ""
+        },
+        {
+          "nome": "Quatro Queijos",
+          "descricao": "Mozzarella, provolone, catupiry e gorgonzola",
+          "preco": 49.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": "vegetariano"
+        }
+      ]
+    },
+    {
+      "nome": "Pizzas Especiais",
+      "icone": "⭐",
+      "itens": [
+        {
+          "nome": "Parma com Rúcula",
+          "descricao": "Presunto de Parma, rúcula, tomate cereja e parmesão",
+          "preco": 59.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": ""
+        },
+        {
+          "nome": "Trufada",
+          "descricao": "Creme de trufa negra, cogumelos frescos e parmesão",
+          "preco": 64.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": "vegetariano,premium"
+        }
+      ]
+    },
+    {
+      "nome": "Bebidas",
+      "icone": "🥤",
+      "itens": [
+        {
+          "nome": "Refrigerante Lata",
+          "descricao": "Coca-Cola, Guaraná ou Fanta (350ml)",
+          "preco": 7.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": ""
+        },
+        {
+          "nome": "Suco Natural",
+          "descricao": "Laranja, limão ou maracujá (500ml)",
+          "preco": 12.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": "natural"
+        },
+        {
+          "nome": "Chopp Artesanal",
+          "descricao": "Pilsen ou IPA (500ml)",
+          "preco": 18.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": ""
+        }
+      ]
+    },
+    {
+      "nome": "Sobremesas",
+      "icone": "🍰",
+      "itens": [
+        {
+          "nome": "Petit Gâteau",
+          "descricao": "Bolo quente de chocolate com sorvete de creme",
+          "preco": 24.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": ""
+        }
+      ]
+    }
+  ]
+}
+
+--- [5] GET /api/itens-menu ---
+{
+  "nomeRestaurante": "Pizzaria do Marcos",
+  "descricao": "As melhores pizzas artesanais de Gravataí!",
+  "logoUrl": "",
+  "corPrimaria": "#E53935",
+  "telefone": "(51) 99999-0000",
+  "endereco": "Rua Exemplo, 123 - Gravataí/RS",
+  "categorias": [
+    {
+      "nome": "Pizzas Tradicionais",
+      "icone": "🍕",
+      "itens": [
+        {
+          "nome": "Margherita",
+          "descricao": "Molho de tomate, mozzarella, manjericão fresco e azeite",
+          "preco": 42.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": "vegetariano"
+        },
+        {
+          "nome": "Calabresa",
+          "descricao": "Molho de tomate, calabresa artesanal, cebola e azeitonas",
+          "preco": 44.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": ""
+        },
+        {
+          "nome": "Portuguesa",
+          "descricao": "Molho de tomate, presunto, ovo, cebola, azeitona e ervilha",
+          "preco": 46.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": ""
+        },
+        {
+          "nome": "Quatro Queijos",
+          "descricao": "Mozzarella, provolone, catupiry e gorgonzola",
+          "preco": 49.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": "vegetariano"
+        }
+      ]
+    },
+    {
+      "nome": "Pizzas Especiais",
+      "icone": "⭐",
+      "itens": [
+        {
+          "nome": "Parma com Rúcula",
+          "descricao": "Presunto de Parma, rúcula, tomate cereja e parmesão",
+          "preco": 59.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": ""
+        },
+        {
+          "nome": "Trufada",
+          "descricao": "Creme de trufa negra, cogumelos frescos e parmesão",
+          "preco": 64.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": "vegetariano,premium"
+        }
+      ]
+    },
+    {
+      "nome": "Bebidas",
+      "icone": "🥤",
+      "itens": [
+        {
+          "nome": "Refrigerante Lata",
+          "descricao": "Coca-Cola, Guaraná ou Fanta (350ml)",
+          "preco": 7.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": ""
+        },
+        {
+          "nome": "Suco Natural",
+          "descricao": "Laranja, limão ou maracujá (500ml)",
+          "preco": 12.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": "natural"
+        },
+        {
+          "nome": "Chopp Artesanal",
+          "descricao": "Pilsen ou IPA (500ml)",
+          "preco": 18.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": ""
+        }
+      ]
+    },
+    {
+      "nome": "Sobremesas",
+      "icone": "🍰",
+      "itens": [
+        {
+          "nome": "Petit Gâteau",
+          "descricao": "Bolo quente de chocolate com sorvete de creme",
+          "preco": 24.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": ""
+        }
+      ]
+    }
+  ]
+}
+
+--- [6] GET /api/dashboard ---
+{
+  "nomeRestaurante": "Pizzaria do Marcos",
+  "descricao": "As melhores pizzas artesanais de Gravataí!",
+  "logoUrl": "",
+  "corPrimaria": "#E53935",
+  "telefone": "(51) 99999-0000",
+  "endereco": "Rua Exemplo, 123 - Gravataí/RS",
+  "categorias": [
+    {
+      "nome": "Pizzas Tradicionais",
+      "icone": "🍕",
+      "itens": [
+        {
+          "nome": "Margherita",
+          "descricao": "Molho de tomate, mozzarella, manjericão fresco e azeite",
+          "preco": 42.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": "vegetariano"
+        },
+        {
+          "nome": "Calabresa",
+          "descricao": "Molho de tomate, calabresa artesanal, cebola e azeitonas",
+          "preco": 44.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": ""
+        },
+        {
+          "nome": "Portuguesa",
+          "descricao": "Molho de tomate, presunto, ovo, cebola, azeitona e ervilha",
+          "preco": 46.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": ""
+        },
+        {
+          "nome": "Quatro Queijos",
+          "descricao": "Mozzarella, provolone, catupiry e gorgonzola",
+          "preco": 49.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": "vegetariano"
+        }
+      ]
+    },
+    {
+      "nome": "Pizzas Especiais",
+      "icone": "⭐",
+      "itens": [
+        {
+          "nome": "Parma com Rúcula",
+          "descricao": "Presunto de Parma, rúcula, tomate cereja e parmesão",
+          "preco": 59.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": ""
+        },
+        {
+          "nome": "Trufada",
+          "descricao": "Creme de trufa negra, cogumelos frescos e parmesão",
+          "preco": 64.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": "vegetariano,premium"
+        }
+      ]
+    },
+    {
+      "nome": "Bebidas",
+      "icone": "🥤",
+      "itens": [
+        {
+          "nome": "Refrigerante Lata",
+          "descricao": "Coca-Cola, Guaraná ou Fanta (350ml)",
+          "preco": 7.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": ""
+        },
+        {
+          "nome": "Suco Natural",
+          "descricao": "Laranja, limão ou maracujá (500ml)",
+          "preco": 12.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": "natural"
+        },
+        {
+          "nome": "Chopp Artesanal",
+          "descricao": "Pilsen ou IPA (500ml)",
+          "preco": 18.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": ""
+        }
+      ]
+    },
+    {
+      "nome": "Sobremesas",
+      "icone": "🍰",
+      "itens": [
+        {
+          "nome": "Petit Gâteau",
+          "descricao": "Bolo quente de chocolate com sorvete de creme",
+          "preco": 24.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": ""
+        }
+      ]
+    }
+  ]
+}
+
+--- [7] GET /api/restaurantes/1/qrcode ---
+Status:  | Content-Type:  | Size: 0 bytes
+
+--- [8] GET /api/cardapio/1 (publico, sem autenticacao) ---
+{
+  "nomeRestaurante": "Pizzaria do Marcos",
+  "descricao": "As melhores pizzas artesanais de Gravataí!",
+  "logoUrl": "",
+  "corPrimaria": "#E53935",
+  "telefone": "(51) 99999-0000",
+  "endereco": "Rua Exemplo, 123 - Gravataí/RS",
+  "categorias": [
+    {
+      "nome": "Pizzas Tradicionais",
+      "icone": "🍕",
+      "itens": [
+        {
+          "nome": "Margherita",
+          "descricao": "Molho de tomate, mozzarella, manjericão fresco e azeite",
+          "preco": 42.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": "vegetariano"
+        },
+        {
+          "nome": "Calabresa",
+          "descricao": "Molho de tomate, calabresa artesanal, cebola e azeitonas",
+          "preco": 44.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": ""
+        },
+        {
+          "nome": "Portuguesa",
+          "descricao": "Molho de tomate, presunto, ovo, cebola, azeitona e ervilha",
+          "preco": 46.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": ""
+        },
+        {
+          "nome": "Quatro Queijos",
+          "descricao": "Mozzarella, provolone, catupiry e gorgonzola",
+          "preco": 49.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": "vegetariano"
+        }
+      ]
+    },
+    {
+      "nome": "Pizzas Especiais",
+      "icone": "⭐",
+      "itens": [
+        {
+          "nome": "Parma com Rúcula",
+          "descricao": "Presunto de Parma, rúcula, tomate cereja e parmesão",
+          "preco": 59.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": ""
+        },
+        {
+          "nome": "Trufada",
+          "descricao": "Creme de trufa negra, cogumelos frescos e parmesão",
+          "preco": 64.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": "vegetariano,premium"
+        }
+      ]
+    },
+    {
+      "nome": "Bebidas",
+      "icone": "🥤",
+      "itens": [
+        {
+          "nome": "Refrigerante Lata",
+          "descricao": "Coca-Cola, Guaraná ou Fanta (350ml)",
+          "preco": 7.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": ""
+        },
+        {
+          "nome": "Suco Natural",
+          "descricao": "Laranja, limão ou maracujá (500ml)",
+          "preco": 12.9,
+          "imagemUrl": "",
+          "destaque": false,
+          "tags": "natural"
+        },
+        {
+          "nome": "Chopp Artesanal",
+          "descricao": "Pilsen ou IPA (500ml)",
+          "preco": 18.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": ""
+        }
+      ]
+    },
+    {
+      "nome": "Sobremesas",
+      "icone": "🍰",
+      "itens": [
+        {
+          "nome": "Petit Gâteau",
+          "descricao": "Bolo quente de chocolate com sorvete de creme",
+          "preco": 24.9,
+          "imagemUrl": "",
+          "destaque": true,
+          "tags": ""
+        }
+      ]
+    }
+  ]
+}
+
+================================================================================
+  TODOS OS TESTES EXECUTADOS COM SUCESSO
+================================================================================

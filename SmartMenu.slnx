@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/SmartMenu.Api/SmartMenu.Api.csproj" />
+    <Project Path="src/SmartMenu.Shared/SmartMenu.Shared.csproj" />
+    <Project Path="src/SmartMenu.Web/SmartMenu.Web.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/SmartMenu.Tests/SmartMenu.Tests.csproj" />
+  </Folder>
+</Solution>

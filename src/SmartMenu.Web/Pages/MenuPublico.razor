@@ -1,0 +1,168 @@
+@page "/menu/{Slug}"
+@inject SmartMenu.Web.Services.ApiService Api
+@using SmartMenu.Shared.DTOs
+
+<PageTitle>@(cardapio?.NomeRestaurante ?? "Cardápio") — SmartMenu</PageTitle>
+
+@if (carregando)
+{
+    <div class="text-center py-5">
+        <div class="spinner-border" style="color:var(--cor)"></div>
+    </div>
+}
+else if (erro is not null)
+{
+    <div class="container py-5 text-center">
+        <div style="font-size:4rem">😕</div>
+        <h3 class="mt-3">Cardápio não encontrado</h3>
+        <p class="text-muted">O slug <strong>@Slug</strong> não existe ou foi desativado.</p>
+    </div>
+}
+else if (cardapio is not null)
+{
+    <div class="menu-page" style="--cor:@(cardapio.CorPrimaria.TrimEnd())">
+
+        <div class="menu-hero">
+            <div class="menu-hero-content">
+                <div class="menu-avatar">@cardapio.NomeRestaurante[0]</div>
+                <h1 class="menu-nome">@cardapio.NomeRestaurante</h1>
+                <p class="menu-desc">@cardapio.Descricao</p>
+                <div class="menu-info-bar">
+                    @if (!string.IsNullOrEmpty(cardapio.Telefone))
+                    {
+                        <span>📞 @cardapio.Telefone</span>
+                    }
+                    @if (!string.IsNullOrEmpty(cardapio.Endereco))
+                    {
+                        <span>📍 @cardapio.Endereco</span>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-body">
+            @foreach (var cat in cardapio.Categorias)
+            {
+                var destaques = cat.Itens.Where(i => i.Destaque).ToList();
+                var normais = cat.Itens.Where(i => !i.Destaque).ToList();
+
+                <div class="cat-bloco">
+                    <div class="cat-titulo">
+                        <span class="cat-icone">@cat.Icone</span>
+                        <span>@cat.Nome</span>
+                    </div>
+
+                    @if (destaques.Any())
+                    {
+                        <div class="destaques-row">
+                            @foreach (var item in destaques)
+                            {
+                                <div class="item-destaque">
+                                    <div class="dest-badge">⭐ Destaque</div>
+                                    <div class="dest-nome">@item.Nome</div>
+                                    <div class="dest-desc">@item.Descricao</div>
+                                    @if (!string.IsNullOrEmpty(item.Tags))
+                                    {
+                                        <div class="dest-tags">
+                                            @foreach (var tag in item.Tags.Split(',', StringSplitOptions.RemoveEmptyEntries))
+                                            {
+                                                <span class="tag">@tag.Trim()</span>
+                                            }
+                                        </div>
+                                    }
+                                    <div class="dest-preco">R$ @item.Preco.ToString("N2")</div>
+                                </div>
+                            }
+                        </div>
+                    }
+
+                    <div class="itens-lista">
+                        @foreach (var item in normais)
+                        {
+                            <div class="item-linha">
+                                <div class="il-info">
+                                    <span class="il-nome">@item.Nome</span>
+                                    <span class="il-desc">@item.Descricao</span>
+                                    @if (!string.IsNullOrEmpty(item.Tags))
+                                    {
+                                        <div class="il-tags">
+                                            @foreach (var tag in item.Tags.Split(',', StringSplitOptions.RemoveEmptyEntries))
+                                            {
+                                                <span class="tag">@tag.Trim()</span>
+                                            }
+                                        </div>
+                                    }
+                                </div>
+                                <span class="il-preco">R$ @item.Preco.ToString("N2")</span>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+
+        <footer class="menu-footer">
+            <p>Cardápio digital por <strong>SmartMenu</strong></p>
+        </footer>
+    </div>
+}
+
+<style>
+    :root { --cor: #4CAF50; }
+    .menu-page { background: #fafafa; min-height: 100vh; }
+    .menu-hero { background: var(--cor); color: #fff; padding: 2.5rem 1.5rem 2rem; text-align: center; }
+    .menu-avatar { width: 80px; height: 80px; border-radius: 50%; background: rgba(255,255,255,.25);
+                    display: inline-flex; align-items: center; justify-content: center;
+                    font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; }
+    .menu-nome { font-size: 2rem; font-weight: 800; margin: 0 0 .5rem; }
+    .menu-desc { font-size: 1rem; opacity: .9; margin: 0 0 1rem; }
+    .menu-info-bar { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;
+                      font-size: .85rem; opacity: .85; }
+    .menu-body { max-width: 720px; margin: 0 auto; padding: 1.5rem 1rem; }
+    .cat-bloco { margin-bottom: 2.5rem; }
+    .cat-titulo { display: flex; align-items: center; gap: .5rem; font-size: 1.3rem; font-weight: 800;
+                   color: var(--cor); border-bottom: 2px solid var(--cor); padding-bottom: .5rem; margin-bottom: 1rem; }
+    .cat-icone { font-size: 1.5rem; }
+    /* Destaques */
+    .destaques-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+    .item-destaque { background: #fff; border-radius: 12px; padding: 1rem; border: 2px solid var(--cor);
+                      box-shadow: 0 2px 10px rgba(0,0,0,.08); position: relative; }
+    .dest-badge { font-size: .65rem; font-weight: 700; color: var(--cor); margin-bottom: .4rem; }
+    .dest-nome { font-size: 1rem; font-weight: 700; margin-bottom: .2rem; }
+    .dest-desc { font-size: .8rem; color: #888; line-height: 1.4; margin-bottom: .4rem; }
+    .dest-preco { font-size: 1.2rem; font-weight: 800; color: var(--cor); margin-top: .5rem; }
+    /* Lista normal */
+    .itens-lista { display: flex; flex-direction: column; gap: .5rem; }
+    .item-linha { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;
+                   padding: .75rem 1rem; background: #fff; border-radius: 8px; border: 1px solid #eee; }
+    .il-info { flex: 1; }
+    .il-nome { display: block; font-weight: 600; font-size: .95rem; }
+    .il-desc { display: block; color: #888; font-size: .82rem; line-height: 1.4; }
+    .il-preco { font-weight: 800; color: var(--cor); white-space: nowrap; font-size: 1rem; }
+    /* Tags */
+    .dest-tags, .il-tags { display: flex; gap: .25rem; flex-wrap: wrap; margin-top: .3rem; }
+    .tag { background: #e8f5e9; color: #2e7d32; font-size: .68rem; padding: .1rem .4rem;
+            border-radius: 4px; font-weight: 600; }
+    .menu-footer { text-align: center; padding: 2rem; color: #aaa; font-size: .8rem; border-top: 1px solid #eee; }
+</style>
+
+@code {
+    [Parameter] public string Slug { get; set; } = "";
+
+    CardapioPublicoResponse? cardapio;
+    string? erro;
+    bool carregando = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            cardapio = await Api.GetMenuPublicoAsync(Slug);
+        }
+        catch
+        {
+            erro = "Cardápio não encontrado.";
+        }
+        carregando = false;
+    }
+}

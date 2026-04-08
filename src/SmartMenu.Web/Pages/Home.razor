@@ -1,0 +1,102 @@
+﻿@page "/"
+@inject NavigationManager Nav
+@inject SmartMenu.Web.Services.ApiService Api
+
+<PageTitle>SmartMenu — Login</PageTitle>
+
+<div class="login-container">
+    <div class="login-card">
+        <div class="login-logo">🍕</div>
+        <h1 class="login-title">SmartMenu</h1>
+        <p class="login-sub">Cardápio digital multi-tenant</p>
+
+        <div class="login-form">
+            <div class="form-group">
+                <label>E-mail</label>
+                <input class="form-control" type="email" @bind="email" placeholder="demo@smartmenu.com" />
+            </div>
+            <div class="form-group mt-3">
+                <label>Senha</label>
+                <input class="form-control" type="password" @bind="senha" placeholder="demo123"
+                       @onkeydown="OnKeyDown" />
+            </div>
+
+            @if (!string.IsNullOrEmpty(erro))
+            {
+                <div class="alert alert-danger mt-3">@erro</div>
+            }
+
+            <button class="btn btn-primary w-100 mt-4" @onclick="Entrar" disabled="@carregando">
+                @if (carregando)
+                {
+                    <span class="spinner-border spinner-border-sm me-2"></span>
+                }
+                Entrar
+            </button>
+        </div>
+
+        <div class="login-demo mt-4">
+            <small class="text-muted">Demo: demo@smartmenu.com / demo123</small>
+        </div>
+
+        <div class="mt-4 text-center">
+            <a href="/menu/pizzaria-do-marcos" class="text-success small">Ver cardápio público →</a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .login-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    }
+    .login-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 2.5rem 2rem;
+        width: 100%;
+        max-width: 400px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        text-align: center;
+    }
+    .login-logo { font-size: 3rem; margin-bottom: .5rem; }
+    .login-title { font-size: 2rem; font-weight: 800; color: #1a1a2e; margin: 0; }
+    .login-sub { color: #888; font-size: .9rem; margin-bottom: 1.5rem; }
+    .login-form { text-align: left; }
+    .login-form label { font-weight: 600; font-size: .85rem; color: #444; }
+    .login-demo { background: #f8f9fa; border-radius: 8px; padding: .75rem 1rem; }
+</style>
+
+@code {
+    string email = "demo@smartmenu.com";
+    string senha = "demo123";
+    string erro = "";
+    bool carregando = false;
+
+    protected override void OnInitialized()
+    {
+        if (Api.Autenticado)
+            Nav.NavigateTo("/restaurantes");
+    }
+
+    async Task Entrar()
+    {
+        carregando = true;
+        erro = "";
+        var (ok, msg) = await Api.LoginAsync(email, senha);
+        if (ok)
+            Nav.NavigateTo("/restaurantes");
+        else
+            erro = msg;
+        carregando = false;
+    }
+
+    async Task OnKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter") await Entrar();
+    }
+}
+

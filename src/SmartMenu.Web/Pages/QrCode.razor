@@ -1,0 +1,88 @@
+@page "/qrcode/{RestauranteId:int}/{Slug}"
+@inject SmartMenu.Web.Services.ApiService Api
+@inject NavigationManager Nav
+
+<PageTitle>QR Code — SmartMenu</PageTitle>
+
+@if (!Api.Autenticado) { Nav.NavigateTo("/"); return; }
+
+<div class="page-header">
+    <div>
+        <button class="btn btn-link p-0 mb-1" @onclick="Voltar">← Cardápio</button>
+        <h2 class="page-title">📱 QR Code do Restaurante</h2>
+    </div>
+</div>
+
+<div class="qrcode-container">
+    @if (carregando)
+    {
+        <div class="text-center py-5">
+            <div class="spinner-border text-success"></div>
+            <p class="mt-2 text-muted">Gerando QR Code...</p>
+        </div>
+    }
+    else if (erro is not null)
+    {
+        <div class="alert alert-danger">@erro</div>
+    }
+    else if (qrBase64 is not null)
+    {
+        <div class="qr-card">
+            <div class="qr-frame">
+                <img src="data:image/png;base64,@qrBase64" alt="QR Code" class="qr-img" />
+            </div>
+            <div class="qr-info">
+                <h5 class="qr-titulo">Escaneie para ver o cardápio</h5>
+                <p class="qr-url">
+                    <code>http://localhost:5123/menu/@Slug</code>
+                </p>
+                <p class="qr-hint text-muted">
+                    Aponta para o cardápio público — acessível sem login.
+                </p>
+                <a href="/menu/@Slug" target="_blank" class="btn btn-success mt-2">
+                    Abrir Cardápio Público →
+                </a>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .page-header { margin-bottom:2rem; }
+    .page-title { font-size:1.4rem; font-weight:800; margin:.25rem 0; }
+    .qrcode-container { max-width:500px; }
+    .qr-card { background:#fff; border-radius:16px; border:1px solid #eee;
+                box-shadow:0 4px 16px rgba(0,0,0,.08); padding:2rem; text-align:center; }
+    .qr-frame { display:inline-block; padding:1rem; background:#fff; border:3px solid #4CAF50;
+                 border-radius:12px; margin-bottom:1.5rem; }
+    .qr-img { width:200px; height:200px; display:block; }
+    .qr-titulo { font-weight:700; font-size:1.1rem; }
+    .qr-url code { font-size:.8rem; background:#f5f5f5; padding:.3rem .6rem; border-radius:6px; }
+    .qr-hint { font-size:.85rem; margin-top:.5rem; }
+</style>
+
+@code {
+    [Parameter] public int RestauranteId { get; set; }
+    [Parameter] public string Slug { get; set; } = "";
+
+    string? qrBase64;
+    string? erro;
+    bool carregando = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (!Api.Autenticado) { Nav.NavigateTo("/"); return; }
+        try
+        {
+            var bytes = await Api.GetQrCodeAsync(RestauranteId);
+            qrBase64 = Convert.ToBase64String(bytes);
+        }
+        catch (Exception ex)
+        {
+            erro = $"Erro ao gerar QR Code: {ex.Message}";
+        }
+        carregando = false;
+    }
+
+    void Voltar() => Nav.NavigateTo($"/cardapio/{RestauranteId}");
+}
